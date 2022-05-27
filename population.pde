@@ -18,4 +18,13 @@ void population() {
   clearTextWidth = quitButtonWidth;
   clearTextHeight = quitButtonHeight;
   //
+  circToolX = quitButtonX;
+  circToolY = displayHeight*2/20;
+  circToolWidth = quitButtonWidth;
+  circToolHeight = quitButtonHeight;
+  //
+  lineToolX = quitButtonX;
+  lineToolY = displayHeight*3/20;
+  lineToolWidth = quitButtonWidth;
+  lineToolHeight = quitButtonHeight;
 }

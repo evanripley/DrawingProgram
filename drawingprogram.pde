@@ -1,10 +1,12 @@
 //Global Variables
-Boolean draw=false;
+Boolean drawLine=false, drawEllipse= false;
 //
 float quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight;
 float clearTextX, clearTextY, clearTextWidth, clearTextHeight;
+float circToolX, circToolY, circToolWidth, circToolHeight;
+float lineToolX, lineToolY, lineToolWidth, lineToolHeight;
 int reset=1;
-color white=255, resetColour=white, red=#FF0303, black=0, cream =#F2F2F2,  quitButtonColour, clearButtonColour;
+color white=255, resetColour=white, red=#FF0303, black=0, cream =#F2F2F2, quitButtonColour, clearButtonColour, circButtonColour, lineButtonColour;
 //
 void setup() {
   fullScreen();
@@ -18,10 +20,12 @@ void draw() {
   //
   if (paper==true) pieceOfPaper();
   //
-  //Drawing Tools, with a combined Boolean
-  if ( draw==true && mouseX>=drawingSurfaceX && mouseX<=drawingSurfaceX+drawingSurfaceWidth && mouseY>=drawingSurfaceY && mouseY<=drawingSurfaceY+drawingSurfaceHeight ) line( mouseX, mouseY, pmouseX, pmouseY ) ;//End Line Draw
-  if ( draw==true && mouseX>=drawingSurfaceX && mouseX<=drawingSurfaceX+drawingSurfaceWidth && mouseY>=drawingSurfaceY && mouseY<=drawingSurfaceY+drawingSurfaceHeight ) ellipse ( mouseX, mouseY, drawingDiameter, drawingDiameter ); //Circle Drawing Tool
-  //
+  //Drawing Tools
+  if ( drawLine==true && mouseX>=drawingSurfaceX && mouseX<=drawingSurfaceX+drawingSurfaceWidth && mouseY>=drawingSurfaceY && mouseY<=drawingSurfaceY+drawingSurfaceHeight ) line( mouseX, mouseY, pmouseX, pmouseY ); 
+  //else { drawLine = false;}
+  ;//End Line Draw
+  if ( drawEllipse==true && mouseX>=drawingSurfaceX && mouseX<=drawingSurfaceX+drawingSurfaceWidth && mouseY>=drawingSurfaceY && mouseY<=drawingSurfaceY+drawingSurfaceHeight ) ellipse ( mouseX, mouseY, drawingDiameter, drawingDiameter );
+  //else { drawEllipse = false;}
   //hoverover
   if ( mouseX>=quitButtonX && mouseX<=quitButtonX+quitButtonWidth && mouseY>=quitButtonY && mouseY<=quitButtonY+quitButtonHeight ) {
     quitButtonColour = red;
@@ -32,44 +36,99 @@ void draw() {
     clearButtonColour = cream;
   } else {
     clearButtonColour = white;
-  }
+  }//end clear hoverover
+  if ( mouseX>=circToolX && mouseX<=circToolX+circToolWidth && mouseY>=circToolY && mouseY<=circToolY+circToolHeight ) {
+    circButtonColour = cream;
+  } else {
+    circButtonColour = white;
+  }//End circ tool hoverover
+  if ( mouseX>=lineToolX && mouseX<=lineToolX+lineToolWidth && mouseY>=lineToolY && mouseY<=lineToolY+lineToolHeight ) {
+    lineButtonColour = cream;
+  } else {
+    lineButtonColour = white;
+  }//End line tool hoverover
   //
   fill(quitButtonColour);
   rect(quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight);
   stroke(reset);
   fill(resetColour); //White, not night mode friendly
-  //
-  //Text, Quit Button
   fill(black); //Ink
   textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
   //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
-  size = 20; //Change until fits
+  size = 25; //Change until fits
   textFont(font, size);
   text(quitButtonString, quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight);
   //
-  //Second Rectangle with More Text
+  //Clear rect
   fill(clearButtonColour); 
   rect(clearTextX, clearTextY, clearTextWidth, clearTextHeight);
   fill(black); //Ink
   textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
   //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
-  size = 13; //Change until fits
+  size = 16; //Change until fits
   textFont(font, size);
   text(clearTextString, clearTextX, clearTextY, clearTextWidth, clearTextHeight);
+  //
+  //circ tool
+  circButton();
+  fill(circButtonColour); 
+  rect(circToolX, circToolY, circToolWidth, circToolHeight);
+  fill(black); //Ink
+  textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+  //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
+  size = 16; //Change until fits
+  textFont(font, size);
+  text(circString, circToolX, circToolY, circToolWidth, circToolHeight);
+  //line tool
+  lineButton();
+  fill(lineButtonColour); 
+  rect(lineToolX, lineToolY, lineToolWidth, lineToolHeight);
+  fill(black); //Ink
+  textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+  //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
+  size = 16; //Change until fits
+  textFont(font, size);
+  text(lineString, lineToolX, lineToolY, lineToolWidth, lineToolHeight);
 }//End draw
 //
 void keyPressed() {
+  if (keyCode = e
 }//End keyPressed
-//
+//lineToolX, lineToolY, lineToolWidth, lineToolHeight
 void mousePressed() {
   //Paper-Button
-  if (mouseX>=drawingSurfaceX && mouseX<=drawingSurfaceX+drawingSurfaceWidth && mouseY>=drawingSurfaceY && mouseY<=drawingSurfaceY+drawingSurfaceHeight ) {
-    if (draw == false) {
-      draw = true;
+  if (mouseX>=lineToolX && mouseX<=lineToolX+lineToolWidth && mouseY>=lineToolY && mouseY<=lineToolY+lineToolHeight ) {
+    if (drawLine == false) {
+      drawLine = true;
     } else {
-      draw = false;
-    }//End draw Boolean
-  }//Button Paper (Drawing Surface)
+      drawLine = false;
+    }
+  }//end drawLine
+  //circToolX, circToolY, circToolWidth, circToolHeight
+  if (mouseX>=circToolX && mouseX<=circToolX+circToolWidth && mouseY>=circToolY && mouseY<=circToolY+circToolHeight ) {
+    if (drawEllipse == false) {
+      drawEllipse = true;
+    } else {
+      drawEllipse = false;
+    }
+  }//end drawEllipse, drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight
+  /*
+  if (mouseX>=drawingSurfaceX && mouseX<=drawingSurfaceX+drawingSurfaceWidth && mouseY>=drawingSurfaceY && mouseY<=drawingSurfaceY+drawingSurfaceHeight ) {
+    if (drawLine == true) {
+      drawLine = false;
+    } else {
+      drawLine = true;
+    }
+  }//end eraseLine
+  if (mouseX>=drawingSurfaceX && mouseX<=drawingSurfaceX+drawingSurfaceWidth && mouseY>=drawingSurfaceY && mouseY<=drawingSurfaceY+drawingSurfaceHeight ) {
+    if (drawEllipse == true) {
+      drawEllipse = false;
+    } else {
+      drawEllipse = true;
+    }
+  }//end eraseEllipse
+  */
+  //
   if (mouseX>=quitButtonX && mouseX<=quitButtonX+quitButtonWidth && mouseY>=quitButtonY && mouseY<=quitButtonY+quitButtonHeight) exit();
   //
   if (mouseX>=clearTextX && mouseX<=clearTextX+clearTextWidth && mouseY>=clearTextY && mouseY<=clearTextY+clearTextHeight) paper=true;
