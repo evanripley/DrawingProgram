@@ -5,6 +5,14 @@ float quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight;
 float clearTextX, clearTextY, clearTextWidth, clearTextHeight;
 float circToolX, circToolY, circToolWidth, circToolHeight;
 float lineToolX, lineToolY, lineToolWidth, lineToolHeight;
+float toolBoxX, toolBoxY, toolBoxWidth, toolBoxHeight, toolBoxTitleX, toolBoxTitleY, toolBoxTitleWidth, toolBoxTitleHeight;
+float colourBoxX, colourBoxY, colourBoxWidth, colourBoxHeight, colourBoxTitleX, colourBoxTitleY, colourBoxTitleWidth, colourBoxTitleHeight;
+//colours
+float colourRedX, colourRedY, colourRedWidth, colourRedHeight;
+float colourOrangeX, colourOrangeY, colourOrangeWidth, colourOrangeHeight;
+float colourYellowX, colourYellowY, colourYellowWidth, colourYellowHeight;
+float colourGreenX, colourGreenY, colourGreenWidth, colourGreenHeight;
+//
 int reset=1;
 color white=255, resetColour=white, red=#FF0303, black=0, cream =#F2F2F2, quitButtonColour, clearButtonColour, circButtonColour, lineButtonColour;
 //
@@ -48,6 +56,7 @@ void draw() {
     lineButtonColour = white;
   }//End line tool hoverover
   //
+  //rects
   fill(quitButtonColour);
   rect(quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight);
   stroke(reset);
@@ -65,9 +74,37 @@ void draw() {
   fill(black); //Ink
   textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
   //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
-  size = 16; //Change until fits
+  size = 25; //Change until fits
   textFont(font, size);
   text(clearTextString, clearTextX, clearTextY, clearTextWidth, clearTextHeight);
+  //
+  //toolBox
+  fill(white); 
+  rect(toolBoxX, toolBoxY, toolBoxWidth, toolBoxHeight);
+  fill(black); //Ink
+  //title tools
+  fill(white); 
+  rect(toolBoxTitleX, toolBoxTitleY, toolBoxTitleWidth, toolBoxTitleHeight);
+  fill(black); //Ink
+  textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+  //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
+  size = 25; //Change until fits
+  textFont(font, size);
+  text(toolBoxString, toolBoxTitleX, toolBoxTitleY, toolBoxTitleWidth, toolBoxTitleHeight);
+  //
+  //colourBox
+  fill(white); 
+  rect(colourBoxX, colourBoxY, colourBoxWidth, colourBoxHeight);
+  fill(black); //Ink
+  //title colour
+  fill(white); 
+  rect(colourBoxTitleX, colourBoxTitleY, colourBoxTitleWidth, colourBoxTitleHeight);
+  fill(black); //Ink
+  textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+  //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
+  size = 25; //Change until fits
+  textFont(font, size);
+  text(colourBoxString, colourBoxTitleX, colourBoxTitleY, colourBoxTitleWidth, colourBoxTitleHeight);
   //
   //circ tool
   circButton();
@@ -79,6 +116,7 @@ void draw() {
   size = 16; //Change until fits
   textFont(font, size);
   text(circString, circToolX, circToolY, circToolWidth, circToolHeight);
+  //
   //line tool
   lineButton();
   fill(lineButtonColour); 
@@ -92,7 +130,7 @@ void draw() {
 }//End draw
 //
 void keyPressed() {
-  if (keyCode = e
+  //if (keyCode = e
 }//End keyPressed
 //lineToolX, lineToolY, lineToolWidth, lineToolHeight
 void mousePressed() {
@@ -114,20 +152,20 @@ void mousePressed() {
   }//end drawEllipse, drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight
   /*
   if (mouseX>=drawingSurfaceX && mouseX<=drawingSurfaceX+drawingSurfaceWidth && mouseY>=drawingSurfaceY && mouseY<=drawingSurfaceY+drawingSurfaceHeight ) {
-    if (drawLine == true) {
-      drawLine = false;
-    } else {
-      drawLine = true;
-    }
-  }//end eraseLine
-  if (mouseX>=drawingSurfaceX && mouseX<=drawingSurfaceX+drawingSurfaceWidth && mouseY>=drawingSurfaceY && mouseY<=drawingSurfaceY+drawingSurfaceHeight ) {
-    if (drawEllipse == true) {
-      drawEllipse = false;
-    } else {
-      drawEllipse = true;
-    }
-  }//end eraseEllipse
-  */
+   if (drawLine == true) {
+   drawLine = false;
+   } else {
+   drawLine = true;
+   }
+   }//end eraseLine
+   if (mouseX>=drawingSurfaceX && mouseX<=drawingSurfaceX+drawingSurfaceWidth && mouseY>=drawingSurfaceY && mouseY<=drawingSurfaceY+drawingSurfaceHeight ) {
+   if (drawEllipse == true) {
+   drawEllipse = false;
+   } else {
+   drawEllipse = true;
+   }
+   }//end eraseEllipse
+   */
   //
   if (mouseX>=quitButtonX && mouseX<=quitButtonX+quitButtonWidth && mouseY>=quitButtonY && mouseY<=quitButtonY+quitButtonHeight) exit();
   //

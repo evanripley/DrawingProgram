@@ -3,6 +3,8 @@ String quitButtonString = "X";
 String clearTextString = "Clear";
 String circString = "Circle";
 String lineString = "Line";
+String toolBoxString = "Tools";
+String colourBoxString = "Colour";
 PFont font;
 int initialFontSize=55;
 int size;
