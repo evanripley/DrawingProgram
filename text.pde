@@ -5,6 +5,7 @@ String circString = "Circle";
 String lineString = "Line";
 String toolBoxString = "Tools";
 String colourBoxString = "Colour";
+String helpString = "?";
 PFont font;
 int initialFontSize=55;
 int size;
