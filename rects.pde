@@ -80,4 +80,14 @@ void rects() {
   size = 20; //Change until fits
   textFont(font, size);
   text(helpString, helpX, helpY, helpWidth, helpHeight);
+  //
+  //quitHelp
+  fill(quitHelpButtonColour); 
+  rect(quitButX, quitButY, quitButXWidth, quitButHeight);
+  fill(black); //Ink
+  textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+  //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
+  size = 25; //Change until fits
+  textFont(font, size);
+  text(quitButtonString, quitButX, quitButY, quitButXWidth, quitButHeight);
 }

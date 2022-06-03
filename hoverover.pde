@@ -26,4 +26,11 @@ void hoverOver() {
   } else {
     helpButtonColour = white;
   }//End help Hoverover
+  //
+  //quithelp hoverover
+  if ( mouseX>=quitButX && mouseX<=quitButX+quitButXWidth && mouseY>=quitButY && mouseY<=quitButY+quitButHeight ) {
+    quitHelpButtonColour = cream;
+  } else {
+    quitHelpButtonColour = white;
+  }//End quithelp Hoverover quitButX, quitButY, quitButXWidth, quitButHeight
 }

@@ -21,6 +21,7 @@ float toolBoxX, toolBoxY, toolBoxWidth, toolBoxHeight, toolBoxTitleX, toolBoxTit
 float colourBoxX, colourBoxY, colourBoxWidth, colourBoxHeight, colourBoxTitleX, colourBoxTitleY, colourBoxTitleWidth, colourBoxTitleHeight;
 float playPauseX, playPauseY, playPauseWidth, playPauseHeight;
 float helpX, helpY, helpWidth, helpHeight, helpRectX, helpRectY, helpRectWidth, helpRectHeight;
+float quitButX, quitButY, quitButXWidth, quitButHeight, quitRectX, quitRectY, quitRectWidth, quitRectHeight;
 //colours
 float colourRedX, colourRedY, colourRedWidth, colourRedHeight;
 float colourOrangeX, colourOrangeY, colourOrangeWidth, colourOrangeHeight;
@@ -28,7 +29,7 @@ float colourYellowX, colourYellowY, colourYellowWidth, colourYellowHeight;
 float colourGreenX, colourGreenY, colourGreenWidth, colourGreenHeight;
 //
 int reset=1;
-color white=255, resetColour=white, red=#FF0303, black=0, cream =#F2F2F2, quitButtonColour, clearButtonColour, circButtonColour, lineButtonColour, helpButtonColour;
+color white=255, resetColour=white, red=#FF0303, black=0, cream =#F2F2F2, quitButtonColour, clearButtonColour, circButtonColour, lineButtonColour, helpButtonColour, quitHelpButtonColour;
 //
 void setup() {
   fullScreen();
@@ -40,13 +41,12 @@ void setup() {
 }//End setup
 //
 void draw() {
+  if (paper==true) pieceOfPaper();
   //
   musicDraw();
   //
-  rect(helpX, helpY, helpWidth, helpHeight);
+  fill(white);
   if (rectON==true) rect(helpRectX, helpRectY, helpRectWidth, helpRectHeight);
-  //
-  if (paper==true) pieceOfPaper();
   //
   //Drawing Tools
   if ( drawLine==true && mouseX>=drawingSurfaceX && mouseX<=drawingSurfaceX+drawingSurfaceWidth && mouseY>=drawingSurfaceY && mouseY<=drawingSurfaceY+drawingSurfaceHeight ) line( mouseX, mouseY, pmouseX, pmouseY ); 
@@ -73,11 +73,19 @@ void keyPressed() {
   if ( key=='e' || key=='E' )
     if ( drawEllipse==true ) {
       drawEllipse=false;
+    } else {
+      drawEllipse=true;
     }
 }//End keyPressed
 //lineToolX, lineToolY, lineToolWidth, lineToolHeight
 void mousePressed() {
-  //Paper-Button
+  //
+  rectON=false;
+  //
+  //
+  //
+  //
+  //tools
   if (mouseX>=lineToolX && mouseX<=lineToolX+lineToolWidth && mouseY>=lineToolY && mouseY<=lineToolY+lineToolHeight ) {
     if (drawLine == false) {
       drawLine = true;
@@ -93,17 +101,22 @@ void mousePressed() {
       drawEllipse = false;
     }
   }
+  //
+  //
+  //
+  //
   if (mouseX>=quitButtonX && mouseX<=quitButtonX+quitButtonWidth && mouseY>=quitButtonY && mouseY<=quitButtonY+quitButtonHeight) exit();
   //
   if (mouseX>=clearTextX && mouseX<=clearTextX+clearTextWidth && mouseY>=clearTextY && mouseY<=clearTextY+clearTextHeight) paper=true;
   //helpX, helpY, helpWidth, helpHeight
-  if (mouseX>=helpX && mouseX<=helpX+helpWidth && mouseY>=helpY && mouseY<=helpY+helpHeight)
-    if (rectON=false); 
-  {
-    rectON=true;
-  }
   //
-  if (mouseX>=helpX && mouseX<=helpX+helpWidth && mouseY>=helpY && mouseY<=helpY+helpHeight)
+  //
+  //
+  //
+  if (mouseX>=helpX && mouseX<=helpX+helpWidth && mouseY>=helpY && mouseY<=helpY+helpHeight) rectON=true;
+  //
+  //quitButX, quitButY, quitButXWidth, quitButHeight
+  if (mouseX>=quitButX && mouseX<=quitButX+quitButXWidth && mouseY>=quitButY && mouseY<=quitButY+quitButHeight)
     if (rectON=true); 
   {
     rectON=false;

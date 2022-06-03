@@ -56,12 +56,19 @@ void population() {
   //playPauseWidth = ;
   //playPauseHeight = ;
   //
+  //
   helpX = toolBoxX;
   helpY = displayHeight*1/20;
   helpWidth = displayWidth*1/20;
   helpHeight = displayHeight*1/20;
-  helpRectX = displayWidth*1/2;
-  helpRectY = displayHeight*1/2;
-  helpRectWidth = displayWidth*1/2;
-  helpRectHeight = displayHeight*1/2;
+  //
+  helpRectX = displayWidth*1/3;
+  helpRectY = displayHeight*1/3;
+  helpRectWidth = displayWidth*1/3;
+  helpRectHeight = displayHeight*1/3;
+  //
+  quitButX = displayWidth*17.2/20;
+  quitButY = helpY;
+  quitButXWidth = helpWidth;
+  quitButHeight = helpHeight;
 }
