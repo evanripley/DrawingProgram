@@ -51,24 +51,11 @@ void population() {
   colourBoxTitleHeight = displayHeight*2/20;
   //
   //
-  //playPauseX = ;
-  //playPauseY = ;
-  //playPauseWidth = ;
-  //playPauseHeight = ;
+  playPauseX = drawingSurfaceX;
+  playPauseY = displayHeight*17/20;
+  playPauseWidth = displayWidth*2/20;
+  playPauseHeight = displayHeight*2/20;
   //
   //
-  helpX = toolBoxX;
-  helpY = displayHeight*1/20;
-  helpWidth = displayWidth*1/20;
-  helpHeight = displayHeight*1/20;
-  //
-  helpRectX = displayWidth*1/3;
-  helpRectY = displayHeight*1/3;
-  helpRectWidth = displayWidth*1/3;
-  helpRectHeight = displayHeight*1/3;
-  //
-  quitButX = displayWidth*17.2/20;
-  quitButY = helpY;
-  quitButXWidth = helpWidth;
-  quitButHeight = helpHeight;
+
 }

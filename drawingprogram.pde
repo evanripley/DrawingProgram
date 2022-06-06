@@ -11,7 +11,6 @@ Minim minim;
 AudioPlayer song1; 
 //
 Boolean drawLine=false, drawEllipse= false;
-Boolean rectON=false;
 //
 float quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight;
 float clearTextX, clearTextY, clearTextWidth, clearTextHeight;
@@ -20,8 +19,6 @@ float lineToolX, lineToolY, lineToolWidth, lineToolHeight;
 float toolBoxX, toolBoxY, toolBoxWidth, toolBoxHeight, toolBoxTitleX, toolBoxTitleY, toolBoxTitleWidth, toolBoxTitleHeight;
 float colourBoxX, colourBoxY, colourBoxWidth, colourBoxHeight, colourBoxTitleX, colourBoxTitleY, colourBoxTitleWidth, colourBoxTitleHeight;
 float playPauseX, playPauseY, playPauseWidth, playPauseHeight;
-float helpX, helpY, helpWidth, helpHeight, helpRectX, helpRectY, helpRectWidth, helpRectHeight;
-float quitButX, quitButY, quitButXWidth, quitButHeight, quitRectX, quitRectY, quitRectWidth, quitRectHeight;
 //colours
 float colourRedX, colourRedY, colourRedWidth, colourRedHeight;
 float colourOrangeX, colourOrangeY, colourOrangeWidth, colourOrangeHeight;
@@ -29,7 +26,7 @@ float colourYellowX, colourYellowY, colourYellowWidth, colourYellowHeight;
 float colourGreenX, colourGreenY, colourGreenWidth, colourGreenHeight;
 //
 int reset=1;
-color white=255, resetColour=white, red=#FF0303, black=0, cream =#F2F2F2, quitButtonColour, clearButtonColour, circButtonColour, lineButtonColour, helpButtonColour, quitHelpButtonColour;
+color white=255, resetColour=white, red=#FF0303, black=0, cream =#F2F2F2, quitButtonColour, clearButtonColour, circButtonColour, lineButtonColour, helpButtonColour, quitHelpButtonColour, playPauseColour;
 //
 void setup() {
   fullScreen();
@@ -45,8 +42,6 @@ void draw() {
   //
   musicDraw();
   //
-  fill(white);
-  if (rectON==true) rect(helpRectX, helpRectY, helpRectWidth, helpRectHeight);
   //
   //Drawing Tools
   if ( drawLine==true && mouseX>=drawingSurfaceX && mouseX<=drawingSurfaceX+drawingSurfaceWidth && mouseY>=drawingSurfaceY && mouseY<=drawingSurfaceY+drawingSurfaceHeight ) line( mouseX, mouseY, pmouseX, pmouseY ); 
@@ -80,8 +75,7 @@ void keyPressed() {
 //lineToolX, lineToolY, lineToolWidth, lineToolHeight
 void mousePressed() {
   //
-  rectON=false;
-  //
+  musicMousePressed();
   //
   //
   //
@@ -113,14 +107,6 @@ void mousePressed() {
   //
   //
   //
-  if (mouseX>=helpX && mouseX<=helpX+helpWidth && mouseY>=helpY && mouseY<=helpY+helpHeight) rectON=true;
-  //
-  //quitButX, quitButY, quitButXWidth, quitButHeight
-  if (mouseX>=quitButX && mouseX<=quitButX+quitButXWidth && mouseY>=quitButY && mouseY<=quitButY+quitButHeight)
-    if (rectON=true); 
-  {
-    rectON=false;
-  }
 }//End mousepressed
 //
 //End MAIN

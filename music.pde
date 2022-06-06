@@ -23,13 +23,7 @@ void musicKeyPressed() {
   if ( key>='2' && key!='9') println("I do not loop that much! Try again.");
   //
   //Alternate Play-Pause Button
-  if ( key=='p' || key=='P' ) {
-    if ( song1.isPlaying() ) {
-      song1.pause();
-    } else {
-      song1.play(); //Parameter is milli-seconds from start of audio file to start of playing
-    }
-  }//End PLAY-PAUSE Button
+  //End PLAY-PAUSE Button
   //
   /* Previous Play Button & Loop Button
    int loopNum = 2; //Local Variables plays once and loops twice
@@ -52,4 +46,15 @@ void musicKeyPressed() {
       song1.rewind();
     }
   }//End STOP Button
+}
+//
+//playPauseX, playPauseY, playPauseWidth, playPauseHeight
+void musicMousePressed() {
+    if (mouseX>=playPauseX && mouseX<=playPauseX+playPauseWidth && mouseY>=playPauseY && mouseY<=playPauseY+playPauseHeight) {
+    if ( song1.isPlaying() ) {
+      song1.pause();
+    } else {
+      song1.play(); //Parameter is milli-seconds from start of audio file to start of playing
+    }
+  }
 }

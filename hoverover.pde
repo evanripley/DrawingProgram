@@ -20,17 +20,10 @@ void hoverOver() {
   } else {
     lineButtonColour = white;
   }//End line tool hoverover
-  //help hoverover
-  if ( mouseX>=helpX && mouseX<=helpX+helpWidth && mouseY>=helpY && mouseY<=helpY+helpHeight ) {
-    helpButtonColour = cream;
+    if (mouseX>=playPauseX && mouseX<=playPauseX+playPauseWidth && mouseY>=playPauseY && mouseY<=playPauseY+playPauseHeight) {
+    playPauseColour = cream;
   } else {
-    helpButtonColour = white;
-  }//End help Hoverover
-  //
-  //quithelp hoverover
-  if ( mouseX>=quitButX && mouseX<=quitButX+quitButXWidth && mouseY>=quitButY && mouseY<=quitButY+quitButHeight ) {
-    quitHelpButtonColour = cream;
-  } else {
-    quitHelpButtonColour = white;
-  }//End quithelp Hoverover quitButX, quitButY, quitButXWidth, quitButHeight
+    playPauseColour = white;
+  }//end playpause hoverover
+//
 }

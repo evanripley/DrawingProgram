@@ -1,5 +1,7 @@
 void rects() {
   //rects
+  //
+  //quit
   fill(quitButtonColour);
   rect(quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight);
   stroke(reset);
@@ -20,6 +22,16 @@ void rects() {
   size = 25; //Change until fits
   textFont(font, size);
   text(clearTextString, clearTextX, clearTextY, clearTextWidth, clearTextHeight);
+  //
+  //play pause
+  fill(playPauseColour); 
+  rect(playPauseX, playPauseY, playPauseWidth, playPauseHeight);
+  fill(black); //Ink
+  textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+  //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
+  size = 50; //Change until fits
+  textFont(font, size);
+  text(playPause, playPauseX, playPauseY, playPauseWidth, playPauseHeight);
   //
   //toolBox
   fill(white); 
@@ -71,23 +83,4 @@ void rects() {
   textFont(font, size);
   text(lineString, lineToolX, lineToolY, lineToolWidth, lineToolHeight);
   //
-  //help
-  fill(helpButtonColour); 
-  rect(helpX, helpY, helpWidth, helpHeight);
-  fill(black); //Ink
-  textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
-  //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
-  size = 20; //Change until fits
-  textFont(font, size);
-  text(helpString, helpX, helpY, helpWidth, helpHeight);
-  //
-  //quitHelp
-  fill(quitHelpButtonColour); 
-  rect(quitButX, quitButY, quitButXWidth, quitButHeight);
-  fill(black); //Ink
-  textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
-  //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
-  size = 25; //Change until fits
-  textFont(font, size);
-  text(quitButtonString, quitButX, quitButY, quitButXWidth, quitButHeight);
 }
