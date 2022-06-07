@@ -1,13 +1,38 @@
 void musicSetup() {
   minim = new Minim(this);
-  song1 = minim.loadFile("musicdownload/freemp3.plus-ALESTORM - P.A.R.T.Y. (Official Video) _ Napalm Records-320.mp3");
+  song[currentSong] = minim.loadFile("musicdownload/freemp3.plus-ALESTORM - P.A.R.T.Y. (Official Video) _ Napalm Records-320.mp3");
+  //song[1] = minim.loadFile ("musicdownload/")
+  //song[2] = minim.loadFile ("musicdownload/")
+  //
+  for (int i=currentSong; i<song.length; i++) {
+    songMetaData[i] = song[i].getMetaData();
+  }//end meta data
+  //
+  //songMetaData[0] = song[0].getMetaData();
+  //songMetaData[1] = song[1].getMetaData();
+  //songMetaData[2] = song[2].getMetaData();
+  //
+
+  //
+  println("Start of Console");
+  println("Click the console to Finish Starting this program"); //See previous lesson for OS-level Button
+  println("Title:", songMetaData[currentSong].title() );
 }
 //
 void musicDraw() {
-  if ( song1.isLooping() ) println("There are", song1.loopCount(), "loops left.");
-  if ( song1.isPlaying() && !song1.isLooping() ) println("Play Once");
+  if ( song[currentSong].isLooping() ) println("There are", song[currentSong].loopCount(), "loops left.");
+  if ( song[currentSong].isPlaying() && !song[currentSong].isLooping() ) println("Play Once");
   //
-  println("Song Position", song1.position(), "Song Length", song1.length() );
+  println("Computer Number of current song:", currentSong);
+  println("Song Position", song[currentSong].position(), "Song Length", song[currentSong].length() );
+  //
+  rect(width*1/4, height*0, width*1/2, height*1/10);
+  fill(white); //Ink, hexidecimal copied from Color Selector
+  textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+  //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
+  textFont(font, 30); //Change the number until it fits, largest font size
+  text(songMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*1/10);
+  fill(255); //Reset to white for rest of the program
 }
 //
 void musicKeyPressed() {
@@ -18,43 +43,38 @@ void musicKeyPressed() {
     String keystr = String.valueOf(key);
     println("Number of Repeats is", keystr);
     int num = int(keystr);
-    song1.loop(num);
+    song[currentSong].loop(num);
   }//End LOOP
   if ( key>='2' && key!='9') println("I do not loop that much! Try again.");
   //
-  //Alternate Play-Pause Button
-  //End PLAY-PAUSE Button
-  //
-  /* Previous Play Button & Loop Button
-   int loopNum = 2; //Local Variables plays once and loops twice
-   if ( key=='l' || key=='L' ) song1.loop(loopNum); //Parameter is number of repeats;
-   */
-  //
-  if ( key=='m' || key=='M' ) { //MUTE Button
-    if ( song1.isMuted() ) { 
-      song1.unmute();
-    } else {
-      song1.mute();
-    }
-  }//End MUTE
+  if ( key=='f' || key=='F' ) song[currentSong].skip(1000) ; // skip forward 1 second (1000 millisecond)
+  if ( key=='r' || key=='R' ) song[currentSong].skip(-1000); 
   //
   if ( key=='s' || key=='S' ) {//STOP Button
-    if ( song1.isPlaying() ) {
-      song1.pause();
-      song1.rewind();
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
     } else {
-      song1.rewind();
+      song[currentSong].rewind();
     }
   }//End STOP Button
 }
 //
 //playPauseX, playPauseY, playPauseWidth, playPauseHeight
 void musicMousePressed() {
-    if (mouseX>=playPauseX && mouseX<=playPauseX+playPauseWidth && mouseY>=playPauseY && mouseY<=playPauseY+playPauseHeight) {
-    if ( song1.isPlaying() ) {
-      song1.pause();
+  if (mouseX>=playPauseX && mouseX<=playPauseX+playPauseWidth && mouseY>=playPauseY && mouseY<=playPauseY+playPauseHeight) {
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
     } else {
-      song1.play(); //Parameter is milli-seconds from start of audio file to start of playing
+      song[currentSong].play(); //Parameter is milli-seconds from start of audio file to start of playing
     }
   }
+  //
+  if (mouseX>=muteButtonX && mouseX<=muteButtonX+muteButtonWidth && mouseY>=muteButtonY && mouseY<=muteButtonY+muteButtonHeight ) { //MUTE Button
+    if ( song[currentSong].isMuted() ) { 
+      song[currentSong].unmute();
+    } else {
+      song[currentSong].mute();
+    }
+  }//End MUTE
 }

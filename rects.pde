@@ -33,6 +33,16 @@ void rects() {
   textFont(font, size);
   text(playPause, playPauseX, playPauseY, playPauseWidth, playPauseHeight);
   //
+  //mute/unmute
+  fill(muteButtonColour); 
+  rect(muteButtonX, muteButtonY, muteButtonWidth, muteButtonHeight);
+  fill(black); //Ink
+  textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+  //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
+  size = 30; //Change until fits
+  textFont(font, size);
+  text(muteUnmute, muteButtonX, muteButtonY, muteButtonWidth, muteButtonHeight);
+  //
   //toolBox
   fill(white); 
   rect(toolBoxX, toolBoxY, toolBoxWidth, toolBoxHeight);

@@ -50,12 +50,15 @@ void population() {
   colourBoxTitleWidth = colourBoxWidth;
   colourBoxTitleHeight = displayHeight*2/20;
   //
-  //
+  //music buttons
   playPauseX = drawingSurfaceX;
   playPauseY = displayHeight*17/20;
   playPauseWidth = displayWidth*2/20;
   playPauseHeight = displayHeight*2/20;
   //
-  //
+  muteButtonX = displayWidth*3/20;
+  muteButtonY = playPauseY;
+  muteButtonWidth = playPauseWidth;
+  muteButtonHeight = playPauseHeight;
 
 }

@@ -8,7 +8,10 @@ import ddf.minim.ugens.*;
 //Global Variables
 //
 Minim minim;
-AudioPlayer song1; 
+int numberOfSongs = 3;
+AudioPlayer[] song = new AudioPlayer[numberOfSongs]; 
+AudioMetaData[] songMetaData = new AudioMetaData[numberOfSongs];
+int currentSong = numberOfSongs - numberOfSongs;
 //
 Boolean drawLine=false, drawEllipse= false;
 //
@@ -18,15 +21,13 @@ float circToolX, circToolY, circToolWidth, circToolHeight;
 float lineToolX, lineToolY, lineToolWidth, lineToolHeight;
 float toolBoxX, toolBoxY, toolBoxWidth, toolBoxHeight, toolBoxTitleX, toolBoxTitleY, toolBoxTitleWidth, toolBoxTitleHeight;
 float colourBoxX, colourBoxY, colourBoxWidth, colourBoxHeight, colourBoxTitleX, colourBoxTitleY, colourBoxTitleWidth, colourBoxTitleHeight;
+//music
 float playPauseX, playPauseY, playPauseWidth, playPauseHeight;
-//colours
-float colourRedX, colourRedY, colourRedWidth, colourRedHeight;
-float colourOrangeX, colourOrangeY, colourOrangeWidth, colourOrangeHeight;
-float colourYellowX, colourYellowY, colourYellowWidth, colourYellowHeight;
-float colourGreenX, colourGreenY, colourGreenWidth, colourGreenHeight;
+float muteButtonX, muteButtonY, muteButtonWidth, muteButtonHeight;
 //
 int reset=1;
-color white=255, resetColour=white, red=#FF0303, black=0, cream =#F2F2F2, quitButtonColour, clearButtonColour, circButtonColour, lineButtonColour, helpButtonColour, quitHelpButtonColour, playPauseColour;
+color white=255, resetColour=white, red=#FF0303, black=0, cream =#F2F2F2;
+color quitButtonColour, clearButtonColour, circButtonColour, lineButtonColour, playPauseColour, muteButtonColour;
 //
 void setup() {
   fullScreen();
@@ -65,7 +66,7 @@ void keyPressed() {
       drawLine=true;
     }
   //
-  if ( key=='e' || key=='E' )
+  if ( key=='q' || key=='Q' )
     if ( drawEllipse==true ) {
       drawEllipse=false;
     } else {
