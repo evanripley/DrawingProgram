@@ -1,16 +1,16 @@
 void musicSetup() {
-  minim = new Minim(this);
-  song[currentSong] = minim.loadFile("musicdownload/freemp3.plus-ALESTORM - P.A.R.T.Y. (Official Video) _ Napalm Records-320.mp3");
-  //song[1] = minim.loadFile ("musicdownload/")
-  //song[2] = minim.loadFile ("musicdownload/")
+  minim = new Minim(this); //
+  song[currentSong] = minim.loadFile("musicdownload/freemp3.plus-ALESTORM - Magellan's Expedition (Official Video) _ Napalm Records-320.mp3");
+  song[1] = minim.loadFile ("musicdownload/freemp3.plus-ALESTORM - P.A.R.T.Y. (Official Video) _ Napalm Records-320.mp3");
+  song[2] = minim.loadFile ("musicdownload/freemp3.plus-ALESTORM - Shipwrecked _ Napalm Records-320.mp3");
   //
   for (int i=currentSong; i<song.length; i++) {
     songMetaData[i] = song[i].getMetaData();
   }//end meta data
   //
-  //songMetaData[0] = song[0].getMetaData();
-  //songMetaData[1] = song[1].getMetaData();
-  //songMetaData[2] = song[2].getMetaData();
+  songMetaData[0] = song[0].getMetaData();
+  songMetaData[1] = song[1].getMetaData();
+  songMetaData[2] = song[2].getMetaData();
   //
 
   //
@@ -26,13 +26,13 @@ void musicDraw() {
   println("Computer Number of current song:", currentSong);
   println("Song Position", song[currentSong].position(), "Song Length", song[currentSong].length() );
   //
-  rect(width*1/4, height*0, width*1/2, height*1/10);
-  fill(white); //Ink, hexidecimal copied from Color Selector
+  fill(white);
+  rect(musicMetaDataX, musicMetaDataY, musicMetaDataWidth, musicMetaDataHeight);
+  fill(black); //Ink, hexidecimal copied from Color Selector
   textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
   //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
-  textFont(font, 30); //Change the number until it fits, largest font size
-  text(songMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*1/10);
-  fill(255); //Reset to white for rest of the program
+  textFont(font, 10); //Change the number until it fits, largest font size
+  text(songMetaData[currentSong].title(), musicMetaDataX, musicMetaDataY, musicMetaDataWidth, musicMetaDataHeight);
 }
 //
 void musicKeyPressed() {
@@ -58,13 +58,32 @@ void musicKeyPressed() {
       song[currentSong].rewind();
     }
   }//End STOP Button
-}
+  //
+  //
+  if (key=='n' || key=='N' ) {
+    if (song[currentSong].isPlaying()) {
+    } else {
+      song[currentSong].rewind();
+      // NEXT BUTTON ARRAY CATCH
+      if ( currentSong >= song.length-1 ) { // error if greater than 2 "catch"
+      currentSong -= currentSong; // restart playlist
+      } else {
+        currentSong++;
+      }//END OF NEXT BUTTON ARRAY CATCH
+    }
+  }
+}//end of next button (n)
+//
+if () {} //end back button
 //
 //playPauseX, playPauseY, playPauseWidth, playPauseHeight
 void musicMousePressed() {
   if (mouseX>=playPauseX && mouseX<=playPauseX+playPauseWidth && mouseY>=playPauseY && mouseY<=playPauseY+playPauseHeight) {
     if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause();
+    } else if ( song[currentSong].position() >= song[currentSong].length()-song[currentSong].length()*1/5 ) { 
+      song[currentSong].rewind();
+      song[currentSong].play();
     } else {
       song[currentSong].play(); //Parameter is milli-seconds from start of audio file to start of playing
     }

@@ -56,9 +56,14 @@ void population() {
   playPauseWidth = displayWidth*2/20;
   playPauseHeight = displayHeight*2/20;
   //
-  muteButtonX = displayWidth*3/20;
+  muteButtonX = playPauseX*7;
   muteButtonY = playPauseY;
   muteButtonWidth = playPauseWidth;
   muteButtonHeight = playPauseHeight;
+  //
+  musicMetaDataX = muteButtonX*1.9;
+  musicMetaDataY = playPauseY;
+  musicMetaDataWidth = displayWidth*6/20;
+  musicMetaDataHeight = playPauseHeight;
 
 }

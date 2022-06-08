@@ -24,6 +24,7 @@ float colourBoxX, colourBoxY, colourBoxWidth, colourBoxHeight, colourBoxTitleX, 
 //music
 float playPauseX, playPauseY, playPauseWidth, playPauseHeight;
 float muteButtonX, muteButtonY, muteButtonWidth, muteButtonHeight;
+float musicMetaDataX, musicMetaDataY, musicMetaDataWidth, musicMetaDataHeight;
 //
 int reset=1;
 color white=255, resetColour=white, red=#FF0303, black=0, cream =#F2F2F2;
