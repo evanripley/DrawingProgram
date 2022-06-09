@@ -52,16 +52,15 @@ void musicKeyPressed() {
   //
 
   //
-  if (key == 'b' || key == 'B') { //
+  if (key == 'b' || key == 'B') { 
     if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause();
       song[currentSong].rewind();
       if ( currentSong == numberOfSongs - numberOfSongs ) {
         currentSong = numberOfSongs - 1;
       } else {
-        currentSong -= 1; // Equivalent code: currentSong = currentSong - 1
+        currentSong -= 1;
       }
-      println(currentSong);
       song[currentSong].play();
     } else {
       song[currentSong].rewind();
@@ -70,7 +69,6 @@ void musicKeyPressed() {
       } else {
         currentSong -= 1;
       }
-      println(currentSong);
     }
   } //end back button
   //
