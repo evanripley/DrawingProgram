@@ -15,6 +15,8 @@ int currentSong = numberOfSongs - numberOfSongs;
 //
 Boolean drawLine=false, drawEllipse= false;
 //
+PImage limeimg3, circimg2, stopimg;
+//
 float quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight;
 float clearTextX, clearTextY, clearTextWidth, clearTextHeight;
 float circToolX, circToolY, circToolWidth, circToolHeight;
@@ -24,13 +26,21 @@ float colourBoxX, colourBoxY, colourBoxWidth, colourBoxHeight, colourBoxTitleX, 
 //music
 float playPauseX, playPauseY, playPauseWidth, playPauseHeight;
 float muteButtonX, muteButtonY, muteButtonWidth, muteButtonHeight;
+float stopButtonX, stopButtonY, stopButtonWidth, stopButtonHeight;
 float musicMetaDataX, musicMetaDataY, musicMetaDataWidth, musicMetaDataHeight;
+float musicInfoX, musicInfoY, musicInfoWidth, musicInfoHeight;
 //
 int reset=1;
 color white=255, resetColour=white, red=#FF0303, black=0, cream =#F2F2F2;
-color quitButtonColour, clearButtonColour, circButtonColour, lineButtonColour, playPauseColour, muteButtonColour;
+color quitButtonColour, clearButtonColour, circButtonColour, lineButtonColour, playPauseColour, muteButtonColour, stopButtonColour;
 //
 void setup() {
+  //
+  limeimg3 = loadImage("images/limeimg3.png");
+  circimg2 = loadImage("images/circimg2.png");
+  stopimg = loadImage("images/stopimg.png");
+  //
+  //
   fullScreen();
   population();
   textSetup();
@@ -40,6 +50,11 @@ void setup() {
 }//End setup
 //
 void draw() {
+  //
+  //
+
+  //
+  //
   if (paper==true) pieceOfPaper();
   //
   musicDraw();
@@ -55,6 +70,10 @@ void draw() {
   hoverOver();
   //
   rects();
+  //
+  image(limeimg3, lineToolX, lineToolY);
+  image(circimg2, circToolX, circToolY);
+  image(stopimg, stopButtonX*1.05, stopButtonY/1.0080);
   //
 }//End draw
 //

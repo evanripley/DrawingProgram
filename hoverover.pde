@@ -29,11 +29,16 @@ void hoverOver() {
   } else {
     playPauseColour = white;
   }//end playpause hoverover
-  //muteButtonX, muteButtonY, muteButtonWidth, muteButtonHeight
   if (mouseX>=muteButtonX && mouseX<=muteButtonX+muteButtonWidth && mouseY>=muteButtonY && mouseY<=muteButtonY+muteButtonHeight) {
     muteButtonColour = cream;
   } else {
     muteButtonColour = white;
   }//end playpause hoverover
+  //stopButtonX, stopButtonY, stopButtonWidth, stopButtonHeight
+  if (mouseX>= stopButtonX&& mouseX<=stopButtonX+stopButtonWidth && mouseY>=stopButtonY && mouseY<=stopButtonY+stopButtonHeight) {
+    stopButtonColour = red;
+  } else {
+    stopButtonColour = white;
+  }//end stop button hoverover
   //
 }

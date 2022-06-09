@@ -29,9 +29,19 @@ void rects() {
   fill(black); //Ink
   textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
   //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
-  size = 50; //Change until fits
+  size = 30; //Change until fits
   textFont(font, size);
   text(playPause, playPauseX, playPauseY, playPauseWidth, playPauseHeight);
+  //
+  //music info
+  fill(white); 
+  rect(musicInfoX, musicInfoY, musicInfoWidth, musicInfoHeight);
+  fill(black); //Ink
+  textAlign (CENTER, TOP); //Align X&Y, see Processing.org / Reference
+  //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
+  size = 20; //Change until fits
+  textFont(font, size);
+  text(musicInfo, musicInfoX, musicInfoY, musicInfoWidth, musicInfoHeight);
   //
   //mute/unmute
   fill(muteButtonColour); 
@@ -42,6 +52,10 @@ void rects() {
   size = 30; //Change until fits
   textFont(font, size);
   text(muteUnmute, muteButtonX, muteButtonY, muteButtonWidth, muteButtonHeight);
+  //
+  //stop
+  fill(stopButtonColour); 
+  rect(stopButtonX, stopButtonY, stopButtonWidth, stopButtonHeight);
   //
   //toolBox
   fill(white); 
@@ -76,7 +90,7 @@ void rects() {
   fill(circButtonColour); 
   rect(circToolX, circToolY, circToolWidth, circToolHeight);
   fill(black); //Ink
-  textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+  textAlign (RIGHT, CENTER); //Align X&Y, see Processing.org / Reference
   //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
   size = 16; //Change until fits
   textFont(font, size);
@@ -87,7 +101,7 @@ void rects() {
   fill(lineButtonColour); 
   rect(lineToolX, lineToolY, lineToolWidth, lineToolHeight);
   fill(black); //Ink
-  textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+  textAlign (RIGHT, CENTER); //Align X&Y, see Processing.org / Reference
   //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
   size = 16; //Change until fits
   textFont(font, size);

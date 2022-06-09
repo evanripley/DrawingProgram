@@ -12,7 +12,7 @@ void musicSetup() {
   songMetaData[1] = song[1].getMetaData();
   songMetaData[2] = song[2].getMetaData();
   //
-
+  //soundEffect[0] = minim.loadFile("musicdownload/Mouse_Click_4-fesliyanstudios.com.mp3");
   //
   println("Start of Console");
   println("Click the console to Finish Starting this program"); //See previous lesson for OS-level Button
@@ -50,14 +50,29 @@ void musicKeyPressed() {
   if ( key=='f' || key=='F' ) song[currentSong].skip(1000) ; // skip forward 1 second (1000 millisecond)
   if ( key=='r' || key=='R' ) song[currentSong].skip(-1000); 
   //
-  if ( key=='s' || key=='S' ) {//STOP Button
+
+  //
+  if (key == 'b' || key == 'B') { //
     if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause();
       song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - numberOfSongs ) {
+        currentSong = numberOfSongs - 1;
+      } else {
+        currentSong -= 1; // Equivalent code: currentSong = currentSong - 1
+      }
+      println(currentSong);
+      song[currentSong].play();
     } else {
       song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - numberOfSongs ) {
+        currentSong = numberOfSongs - 1;
+      } else {
+        currentSong -= 1;
+      }
+      println(currentSong);
     }
-  }//End STOP Button
+  } //end back button
   //
   //
   if (key=='n' || key=='N' ) {
@@ -66,7 +81,7 @@ void musicKeyPressed() {
       song[currentSong].rewind();
       // NEXT BUTTON ARRAY CATCH
       if ( currentSong >= song.length-1 ) { // error if greater than 2 "catch"
-      currentSong -= currentSong; // restart playlist
+        currentSong -= currentSong; // restart playlist
       } else {
         currentSong++;
       }//END OF NEXT BUTTON ARRAY CATCH
@@ -74,26 +89,36 @@ void musicKeyPressed() {
   }
 }//end of next button (n)
 //
-if () {} //end back button
 //
 //playPauseX, playPauseY, playPauseWidth, playPauseHeight
 void musicMousePressed() {
-  if (mouseX>=playPauseX && mouseX<=playPauseX+playPauseWidth && mouseY>=playPauseY && mouseY<=playPauseY+playPauseHeight) {
+  {
+    if (mouseX>=playPauseX && mouseX<=playPauseX+playPauseWidth && mouseY>=playPauseY && mouseY<=playPauseY+playPauseHeight) {
+      if ( song[currentSong].isPlaying() ) {
+        song[currentSong].pause();
+      } else if ( song[currentSong].position() >= song[currentSong].length()-song[currentSong].length()*1/5 ) { 
+        song[currentSong].rewind();
+        song[currentSong].play();
+      } else {
+        song[currentSong].play(); //Parameter is milli-seconds from start of audio file to start of playing
+      }
+    }
+    //
+    if (mouseX>=muteButtonX && mouseX<=muteButtonX+muteButtonWidth && mouseY>=muteButtonY && mouseY<=muteButtonY+muteButtonHeight ) { //MUTE Button
+      if ( song[currentSong].isMuted() ) { 
+        song[currentSong].unmute();
+      } else {
+        song[currentSong].mute();
+      }
+    }//End MUTE
+  }
+  //stopButtonX, stopButtonY, stopButtonWidth, stopButtonHeight
+  if (mouseX>=stopButtonX && mouseX<=stopButtonX+stopButtonWidth && mouseY>=stopButtonY && mouseY<=stopButtonY+stopButtonHeight ) {//STOP Button
     if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause();
-    } else if ( song[currentSong].position() >= song[currentSong].length()-song[currentSong].length()*1/5 ) { 
       song[currentSong].rewind();
-      song[currentSong].play();
     } else {
-      song[currentSong].play(); //Parameter is milli-seconds from start of audio file to start of playing
+      song[currentSong].rewind();
     }
-  }
-  //
-  if (mouseX>=muteButtonX && mouseX<=muteButtonX+muteButtonWidth && mouseY>=muteButtonY && mouseY<=muteButtonY+muteButtonHeight ) { //MUTE Button
-    if ( song[currentSong].isMuted() ) { 
-      song[currentSong].unmute();
-    } else {
-      song[currentSong].mute();
-    }
-  }//End MUTE
+  }//End STOP Button
 }
