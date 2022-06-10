@@ -33,6 +33,7 @@ float musicInfoX, musicInfoY, musicInfoWidth, musicInfoHeight;
 int reset=1;
 color white=255, resetColour=white, red=#FF0303, black=0, cream =#F2F2F2;
 color quitButtonColour, clearButtonColour, circButtonColour, lineButtonColour, playPauseColour, muteButtonColour, stopButtonColour;
+color colorRed=#FF0000, colorOrange=#FF7C00, colorYellow=#FEFF00;
 //
 void setup() {
   //
@@ -70,6 +71,7 @@ void draw() {
   hoverOver();
   //
   rects();
+  colorRects();
   //
   image(limeimg3, lineToolX, lineToolY);
   image(circimg2, circToolX, circToolY);
@@ -124,7 +126,8 @@ void mousePressed() {
   //
   if (mouseX>=clearTextX && mouseX<=clearTextX+clearTextWidth && mouseY>=clearTextY && mouseY<=clearTextY+clearTextHeight) paper=true;
   //helpX, helpY, helpWidth, helpHeight
-  //
+  //redx, redy, redw, redh
+  if (mouseX>=redx && mouseX<=redx+redw && mouseY>=redy && mouseY<=redy+redh);
   //
   //
   //

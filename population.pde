@@ -7,9 +7,29 @@ void population() {
   drawingSurfaceWidth = displayWidth*3/4;
   drawingSurfaceHeight = displayHeight*4/5;
   drawingDiameter = displayWidth*1/100;
+  //color rects
+  redx = displayWidth*16.2/20;
+  redy = displayHeight*13/20;
+  redw = displayWidth*1/20;
+  redh = displayHeight*1/20;
+  //
+  orax = displayWidth*17.2/20;
+  oray = displayHeight*13/20;
+  oraw = displayWidth*1/20;
+  orah = displayHeight*1/20;
+  //
+  yelx = displayWidth*18.2/20;
+  yely = displayHeight*13/20;
+  yelw = displayWidth*1/20;
+  yelh  = displayHeight*1/20;
+  //
+  //grex  = colourBoxX;
+  //grey  = ;
+  //grew = ;
+  //greh = ;
   //quit button
-  quitButtonX = displayWidth*19/20;
-  quitButtonY = displayHeight*0/20;
+  quitButtonX = displayWidth*1/20;
+  quitButtonY  = displayHeight*0/20;
   quitButtonWidth = displayWidth*1/20;
   quitButtonHeight = displayHeight*1/20;
   //clear
