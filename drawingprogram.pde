@@ -14,6 +14,7 @@ AudioMetaData[] songMetaData = new AudioMetaData[numberOfSongs];
 int currentSong = numberOfSongs - numberOfSongs;
 //
 Boolean drawLine=false, drawEllipse= false;
+Boolean penColorRed=false, penColorOrange=false, penColorYellow=false;
 //
 PImage limeimg3, circimg2, stopimg;
 //
@@ -53,7 +54,14 @@ void setup() {
 void draw() {
   //
   //
-
+  if (penColorRed==true); 
+  {
+    stroke(colorRed);
+  }
+  if (penColorOrange==true); 
+  {
+    stroke(colorOrange);
+  }
   //
   //
   if (paper==true) pieceOfPaper();
@@ -127,9 +135,10 @@ void mousePressed() {
   if (mouseX>=clearTextX && mouseX<=clearTextX+clearTextWidth && mouseY>=clearTextY && mouseY<=clearTextY+clearTextHeight) paper=true;
   //helpX, helpY, helpWidth, helpHeight
   //redx, redy, redw, redh
-  if (mouseX>=redx && mouseX<=redx+redw && mouseY>=redy && mouseY<=redy+redh);
+  if (mouseX>=redx && mouseX<=redx+redw && mouseY>=redy && mouseY<=redy+redh) penColorRed=true;
   //
-  //
+  //orax, c, oraw, orah
+  if (mouseX>=orax && mouseX<=orax+oraw && mouseY>=oray && mouseY<=oray+orah) penColorOrange=true;
   //
 }//End mousepressed
 //
